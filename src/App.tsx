@@ -1,25 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useRoutes } from 'react-router-dom';
+
+import { Login, MoviesIndex } from './pages/index';
+import ProtectedRoute from './components/protected-route/ProtectedRoute';
+
 import './App.css';
+import AuthProvider from './context/auth/AuthProvider';
 
 function App() {
+  const routes = useRoutes([
+    { path: "/login", element: <Login /> },
+    { path: "/movies", element: <ProtectedRoute> <MoviesIndex/> </ProtectedRoute> },
+  ])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      {routes}
+    </AuthProvider>
   );
 }
 
