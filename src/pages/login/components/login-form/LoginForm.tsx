@@ -1,20 +1,16 @@
-import { ChangeEvent, ReactNode, useState } from 'react';
+import { ChangeEvent, ReactNode, useState, MouseEvent } from 'react';
 import TextInput from '../../../../components/text-input/TextInput';
+import { AuthCredentials } from '../../../../interfaces/AuthCredentials';
 import { isEmailValid, isPasswordValid } from '../../../../validations/FormValidations';
 import './LoginForm.css';
 
 interface LoginProps {
   children?: ReactNode
-  onSubmit: () => void
-}
-
-interface LoginFormFields {
-  email: string,
-  password: string,
+  onSubmit: (form: AuthCredentials) => void
 }
 
 const LoginForm = ({ onSubmit }: LoginProps) => {
-  const [form, setForm] = useState<LoginFormFields>({
+  const [form, setForm] = useState<AuthCredentials>({
     email: "",
     password: "",
   });
@@ -30,6 +26,11 @@ const LoginForm = ({ onSubmit }: LoginProps) => {
   const isFormValid = () => {
     const { email, password } = form;
     return isEmailValid(email) && isPasswordValid(password);
+  }
+
+  const onFormSubmit = (e: MouseEvent) => {
+    e.preventDefault();
+    onSubmit(form)
   }
 
   const commonInputAttributes = {
@@ -48,7 +49,7 @@ const LoginForm = ({ onSubmit }: LoginProps) => {
           value={form?.email}
           type="email"
           name="email"
-          placeholder="usuario@email.com"
+          placeholder="user@email.com"
           validation={isEmailValid}
           {...commonInputAttributes}
         />
@@ -69,7 +70,7 @@ const LoginForm = ({ onSubmit }: LoginProps) => {
       <div className="form__input-wrapper">
         <button 
           className="button button--primary width-75" 
-          onClick={onSubmit} 
+          onClick={onFormSubmit} 
           disabled={!isFormValid()}
         >
           Login

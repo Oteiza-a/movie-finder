@@ -1,7 +1,12 @@
 import { ReactNode, useEffect, useReducer } from "react";
+import { useNavigate } from "react-router-dom";
 import { getLocalStorageObject } from "../../helpers/localStorage";
+import { AuthCredentials } from "../../interfaces/AuthCredentials";
 import { AuthInfo } from "../../interfaces/AuthInfo";
 import { AuthProviderValue } from "../../interfaces/AuthProviderValue";
+import { User } from "../../interfaces/User";
+import { reqLogin } from "../../services/AuthService";
+import { openDialog } from "../../services/DialogService";
 import { LOGIN, LOGOUT, SET_AUTH_LOADING } from "../types";
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
@@ -20,22 +25,23 @@ const AuthProvider = ({ children }: Props): JSX.Element => {
     loading: false,
   });
   
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
   useEffect(() => {
     localStorage.setItem("auth-state", JSON.stringify(state));
   }, [state])
 
-  const login = () => {
-    dispatch({
-      type: LOGIN,
-      payload: { user: { 
-        id: "pedrito",
-        username: "pedrito",
-        email: "pedrito",
-        password: "pedrito",
-      } }
-    })
+  const login = async (form: AuthCredentials) => {
+    const loginRes: User | null = await reqLogin(form);
+
+    if (!loginRes) {
+      openDialog("login-error");
+    } else {
+      dispatch({ type: LOGIN, payload: { user: loginRes } })
+      navigate("/movies")
+    }
+
   }
 
   const logout = () => {
