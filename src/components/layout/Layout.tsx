@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
-import './Card.css';
+import './Layout.css';
 
-interface CardProps {
+interface LayoutProps {
   children?: ReactNode
 }
 
-const Card = ({ children }: CardProps) => {
+const Card = ({ children }: LayoutProps) => {
   return (
-    <div className="card">
+    <div className="layout">
       { children }
     </div>
   );

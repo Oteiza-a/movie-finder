@@ -1,0 +1,103 @@
+/* FORMS */
+.input {
+  height: 30px;
+  min-width: 200px;
+  padding: 5px 20px;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background-color: var(--background);
+  position: relative;
+}
+
+.input--error:focus {
+  outline: none;
+  border: 2px solid var(--error);
+}
+
+.input--error {
+  border: 2px solid var(--error);
+}
+
+.button {
+  height: 40px;
+  min-width: 150px;
+  width: fit-content;
+  padding: 5px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.7s;
+}
+
+.button:hover {
+  filter: brightness(200%);
+}
+
+.button:disabled {
+  background-color: var(--disabled) !important;
+}
+
+.button--primary {
+  color: white;
+  background-color: var(--accent);
+  border: 1px transparent var(--accent);
+}
+
+.button--secondary {
+
+}
+
+.form {
+  margin: 0px 10px;
+}
+.form__input-wrapper {
+  width: fit-content;
+  margin: 0px auto;
+}
+
+.form__input-wrapper--spaced {
+  margin-bottom: 15px;
+}
+
+.form__input-label {
+  display: block;
+  font-size: small;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+
+/* DECORATIVE */
+.bg-gradient {
+  background: linear-gradient(-45deg, var(--accent), var(--background));
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+      background-position: 0% 50%;
+  }
+
+  50% {
+      background-position: 100% 50%;
+  }
+
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+/* COMMONS */
+
+.width-100 {
+  width: 100%;
+}
+.width-75 {
+  width: 75%;
+}
+.width-50 {
+  width: 50%;
+}
+.width-25 {
+  width: 25%;
+}
