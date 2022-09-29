@@ -1,5 +1,6 @@
 import { ReactNode, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { nullUser } from "../../constants/nullUser";
 import { getLocalStorageObject } from "../../helpers/localStorage";
 import { AuthCredentials } from "../../interfaces/AuthCredentials";
 import { AuthInfo } from "../../interfaces/AuthInfo";
@@ -64,8 +65,8 @@ const AuthProvider = ({ children }: Props): JSX.Element => {
 
   const { user, loading } = state;
   const providerValue: AuthProviderValue = {
-    user: user,
-    authLoading: loading,
+    user: user || nullUser,
+    authLoading: loading || false,
     login,
     logout,
     setLoading,

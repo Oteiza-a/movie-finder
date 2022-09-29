@@ -1,12 +1,11 @@
 import { useAuth } from "../../hooks/useAuth";
+import { AuthCredentials } from "../../interfaces/AuthCredentials";
 import Layout from "../../components/layout/Layout";
 import Card from "../../components/card/Card";
-import './Login.css';
 import LoginForm from "./components/login-form/LoginForm";
-import { AuthCredentials } from "../../interfaces/AuthCredentials";
+import './Login.css';
 
 const Login = (): JSX.Element => {
-
   const { login } = useAuth();
   
   const onLogin = (form: AuthCredentials) => {

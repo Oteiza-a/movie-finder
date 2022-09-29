@@ -11,9 +11,10 @@ interface Props {
 
 const ProtectedRoute = ({ children, routeType }: Props): JSX.Element => {
   const { user } = useAuth();
+  const { id } = user;
 
-  if (routeType === "public-only" && user) return <Navigate to="/movies" />
-  if (routeType === "protected" && !user) return <Navigate to="/login" />
+  if (routeType === "public-only" && id) return <Navigate to="/movies" />
+  if (routeType === "protected" && !id) return <Navigate to="/login" />
   return <>{ children }</>;
 };
 

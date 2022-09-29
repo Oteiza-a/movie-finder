@@ -8,7 +8,7 @@ export const reqLogin = async ({ email, password }: AuthCredentials): Promise<Us
     const res = await validUsers.find((user: User) => user.email === email && user.password === password);
     return res || null;
   } catch (error) {
-    console.error(error)
+    console.error(error);
     return null;
   }
 }
