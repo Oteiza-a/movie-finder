@@ -5,6 +5,7 @@ import ProtectedRoute from './components/protected-route/ProtectedRoute';
 
 import './App.css';
 import AuthProvider from './context/auth/AuthProvider';
+import MoviesProvider from './context/movies/MoviesProvider';
 
 function App() {
   const routes = useRoutes([
@@ -17,15 +18,17 @@ function App() {
       element: <ProtectedRoute routeType="protected"><MoviesIndex /></ProtectedRoute>,
     },
     { 
-      path: "/", 
+      path: "*", 
       element: <Navigate to="/login" />,
     },
   ])
 
   return (
-    <AuthProvider>
-      {routes}
-    </AuthProvider>
+    <MoviesProvider>
+      <AuthProvider>
+        {routes}
+      </AuthProvider>
+    </MoviesProvider>
   );
 }
 

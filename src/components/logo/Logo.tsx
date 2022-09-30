@@ -1,4 +1,4 @@
-import { getStylesVariable } from "../../helpers/documentStyles";
+import stylesVariables from "../../constants/stylesVariables";
 import "./Logo.css"
 
 interface LogoProps {
@@ -8,8 +8,8 @@ interface LogoProps {
 }
 
 const Logo = ({ primaryColor, secondaryColor, fontSize }: LogoProps): JSX.Element => {
-  const color1 = primaryColor || getStylesVariable("--text-primary");
-  const color2 = secondaryColor || getStylesVariable("--accent");
+  const color1 = primaryColor || stylesVariables.textPrimary;
+  const color2 = secondaryColor || stylesVariables.accent;
   
   return (
     <div className="logo">

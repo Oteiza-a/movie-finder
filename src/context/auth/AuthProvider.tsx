@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { nullUser } from "../../constants/nullUser";
 import { getLocalStorageObject } from "../../helpers/localStorage";
 import { AuthCredentials } from "../../interfaces/AuthCredentials";
-import { AuthInfo } from "../../interfaces/AuthInfo";
+import { AuthInfo } from "../../interfaces/AuthState";
 import { AuthProviderValue } from "../../interfaces/AuthProviderValue";
 import { User } from "../../interfaces/User";
 import { reqLogin } from "../../services/AuthService";

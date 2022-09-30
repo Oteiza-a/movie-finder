@@ -1,0 +1,35 @@
+.movie-card {
+  position: relative;
+  width: 100%;
+  min-width: fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background);
+  border-radius: 10px;
+  border: 0.5px solid var(--accent);
+  box-shadow: var(--accent-shadow);
+}
+.movie-card__mark-favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.movie-card__content {
+  padding: 15px 20px;
+}
+.movie-card__poster {
+  width: 100%;
+  border-radius: 5px;
+}
+.movie-card__title {
+  margin: 10px 0px 0px 0px;
+}
+.movie-card__options {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

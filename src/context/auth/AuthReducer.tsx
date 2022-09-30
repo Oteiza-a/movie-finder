@@ -1,4 +1,4 @@
-import { AuthInfo } from "../../interfaces/AuthInfo";
+import { AuthInfo } from "../../interfaces/AuthState";
 import { LOGIN, LOGOUT, SET_AUTH_LOADING } from "../types";
 
 interface Action {

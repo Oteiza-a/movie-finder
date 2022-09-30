@@ -25,25 +25,31 @@
   padding: 5px 20px;
   border-radius: 7px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.7s;
 }
 
-.button:hover button:not(:disabled){
-  filter: brightness(200%);
+.button:hover:not(:disabled){
+  background-color: var(--background-secondary);
+  transform: scale(1.03);
 }
 
 .button:disabled {
-  background-color: var(--disabled) !important;
+  background-color: var(--disabled);
 }
 
 .button--primary {
   color: white;
   background-color: var(--accent);
-  border: 1px transparent var(--accent);
+  border: 1px transparent var(--background-secondary);
 }
 
 .button--secondary {
-
+  color: var(--accent);
+  background-color: var(--background);
+  border: 1px solid var(--accent);
 }
 
 .form {
