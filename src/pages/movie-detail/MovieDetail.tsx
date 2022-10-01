@@ -1,23 +1,23 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import NavigationBar from "../../components/nav-bar/NavigationBar";
 import { stringWithCommasToArray } from "../../helpers/strings";
 import { useMovies } from "../../hooks/useMovies";
 import { Rating } from "../../interfaces/Rating";
 import IconStarRating from '@iconscout/react-unicons/icons/uil-envelope-star'
 import IconArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-circle-left'
-import './MovieDetail.css'
 import stylesVariables from "../../constants/stylesVariables";
+import './MovieDetail.css'
 
 const MovieDetail = (): JSX.Element => {
-  const location = useLocation();
+  const params = useParams();
   const navigate = useNavigate();
   const { getMovieDetail, movieDetail } = useMovies();
 
   useEffect(() => {
-    const movieId: string = location.pathname
-    getMovieDetail(movieId);
-  }, [])
+    const movieId: string = params?.id || "";
+    if (movieId) getMovieDetail(movieId);
+  }, []) // eslint-disable-line
 
   const onGoBack = () => navigate(-1)
 

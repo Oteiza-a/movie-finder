@@ -4,6 +4,7 @@ import { MoviesSearch } from "./MoviesSearch";
 
 export interface MoviesProviderValue {
   movies: Movie[],
+  totalResults: number,
   movieDetail: MovieDetail | null,
   favoriteMovies: Movie[],
   loading: boolean,

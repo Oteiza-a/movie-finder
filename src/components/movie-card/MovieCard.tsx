@@ -4,8 +4,8 @@ import IconArrowRight from '@iconscout/react-unicons/icons/uil-arrow-circle-righ
 import MarkFavorite from "../mark-favorite/MarkFavorite";
 import { useMovies } from "../../hooks/useMovies";
 import stylesVariables from "../../constants/stylesVariables";
+import posterPlaceholder from '../../assets/images/poster-placeholder.jpeg';
 import "./MovieCard.css"
-import { useNavigate } from "react-router-dom";
 
 interface MovieCardProps {
   movie: Movie
@@ -25,6 +25,11 @@ const MovieCard = ({ movie, onSeeMore }: MovieCardProps) => {
       addFavoriteMovie(movie);
     }
   }
+
+  const onPosterError = ({ currentTarget }: any) => {
+    currentTarget.onerror = null;
+    currentTarget.src = posterPlaceholder;
+  }
   
   return (
     <div className="movie-card" key={id}>
@@ -32,7 +37,12 @@ const MovieCard = ({ movie, onSeeMore }: MovieCardProps) => {
         <MarkFavorite isActive={isFavorite} onClick={onMarkAsFavorite} />
       </div>
       <div className="movie-card__content">
-        <img src={poster} className="movie-card__poster" alt="poster"/>
+        <img 
+          src={poster} 
+          className="movie-card__poster" 
+          alt="poster"
+          onError={onPosterError}
+        />
         <h4 className="movie-card__title">{title}</h4>
         <small className="small-text">{capitalize(type)}, {year}</small>
         <div className="movie-card__options">

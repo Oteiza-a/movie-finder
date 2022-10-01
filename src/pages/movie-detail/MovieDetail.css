@@ -47,7 +47,7 @@
 }
 .ratings__points {
   margin: 0px;
-  font-size: xx-large;
+  font-size: 28px;
 }
 @media screen and (max-width: 576px) {
   .movie-detail__poster-section {

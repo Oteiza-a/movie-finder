@@ -11,7 +11,7 @@ const Favorites = (): JSX.Element => {
 
   useEffect(() => {
     setLocalFavoriteMovies(favoriteMovies);
-  }, [])
+  }, []) // eslint-disable-line
 
   return (
     <div>

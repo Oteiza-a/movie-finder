@@ -14,6 +14,7 @@ const MoviesReducer = (state: MoviesState, action: Action): MoviesState => {
       return {
         ...state,
         movies: payload.movies,
+        totalResults: payload.totalResults,
       }
     case SET_MOVIE_DETAIL:
       return {

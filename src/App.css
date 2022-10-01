@@ -30,27 +30,28 @@
   align-items: center;
   transition: all 0.7s;
 }
-
 .button:hover:not(:disabled){
   background-color: var(--background-secondary);
   transform: scale(1.03);
 }
-
 .button:disabled {
   background-color: var(--disabled);
 }
-
 .button--primary {
   color: white;
   background-color: var(--accent);
   border: 1px transparent var(--background-secondary);
 }
-
 .button--secondary {
   color: var(--accent);
   background-color: var(--background);
   border: 1px solid var(--accent);
 }
+.button--fit {
+  min-width: fit-content;
+  width: fit-content;
+}
+
 
 .form {
   margin: 0px 10px;

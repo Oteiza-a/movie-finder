@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { NavBarOption } from '../../interfaces/NavBarOption';
 import Logo from '../logo/Logo';
@@ -19,7 +19,7 @@ const NavigationBar = () => {
   useEffect(() => {
     const selectedOption = navOptions.find(({ route }: NavBarOption) => route === location.pathname);
     if (selectedOption) setSelected(selectedOption.route);
-  }, []) // eslint-disable-next-line
+  }, []) // eslint-disable-line
   
   const renderOptions = () => {
     return navOptions.map(({ title, route }: NavBarOption) => (
