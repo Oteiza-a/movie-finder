@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useReducer } from "react";
 import { openDialog } from "../../services/DialogService";
-import { SET_FAVORITE_MOVIES, SET_MOVIES, SET_MOVIE_DETAIL } from "../types";
+import { SET_FAVORITE_MOVIES, SET_MOVIES, SET_MOVIES_LOADING, SET_MOVIE_DETAIL } from "../types";
 import MoviesReducer from "./MoviesReducer";
 import { MoviesState } from "../../interfaces/MoviesState";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
@@ -21,7 +21,10 @@ interface Props {
 
 const initializeState = (initialValue: MoviesState): MoviesState => {
   const localState = getLocalStorageObject("movies-state");
-  if (localState) return localState as MoviesState;
+  if (localState) {
+    const localMoviesState = localState as MoviesState
+    return { ...localMoviesState, movies: [] };
+  }
   return initialValue;
 };
 
@@ -44,18 +47,25 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
 
     // dispatch({ type: SET_MOVIES, payload: { movies: moviesMocks } as MoviesState })
     // return
+    dispatch({ type: SET_MOVIES_LOADING, payload: { loading: true } as MoviesState })
     const moviesRes = await getMovies(search);
-
+    
     if (!moviesRes) {
       openDialog("movies-get-error");
+    } else if (moviesRes.Error === "Movie not found!") {
+      dispatch({ type: SET_MOVIES, payload: { movies: [] as Movie[], totalResults: 0 } as MoviesState })
+
     } else {
       const { Search: moviesResults, totalResults } = moviesRes;
       const adaptedMovies = moviesResults.map((rawMovie: MovieRaw) => movieAdapter(rawMovie));
       dispatch({ type: SET_MOVIES, payload: { movies: adaptedMovies, totalResults: Number(totalResults) } as MoviesState })
     }
+
+    dispatch({ type: SET_MOVIES_LOADING, payload: { loading: false } as MoviesState })
   }
 
   const getMovieDetail = async (movieId: string) => {
+    dispatch({ type: SET_MOVIE_DETAIL, payload: { movieDetail: null } as MoviesState })
     const movieRes: MovieDetailRaw | null = await getMovie(movieId);
     if (!movieRes) {
       openDialog("movies-get-error");

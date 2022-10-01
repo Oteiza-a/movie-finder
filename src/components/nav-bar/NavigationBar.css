@@ -1,4 +1,7 @@
 .nav-bar {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
   width: 100vw;
   background-color: var(--background);
   box-shadow: var(--accent-shadow);
@@ -38,10 +41,12 @@
   text-decoration: none;
 }
 .nav-bar__profile {
+  position: relative;
   display: flex;
   padding: 0px 20px;
   gap: 15px;
   border-left: 1px solid var(--accent);
+  cursor: pointer;
 }
 .nav-bar__profile-info {
   text-align: right;
@@ -49,6 +54,15 @@
 .nav-bar__profile-image {
   width: 38px;
   height: 38px;
+}
+.nav-bar__profile__popover {
+  position: absolute;
+  top: 50px;
+  background-color: var(--background);
+  width: 100%;
+  padding: 20px;
+  box-shadow: var(--default-shadow);
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 576px){

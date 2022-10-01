@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Empty from "../../components/empty/Empty";
 import Layout from "../../components/layout/Layout";
 import MoviesRenderer from "../../components/movies-renderer/MoviesRenderer";
 import NavigationBar from "../../components/nav-bar/NavigationBar";
@@ -18,7 +19,10 @@ const Favorites = (): JSX.Element => {
       <NavigationBar />
       <Layout>
         <h2 className="mt-5 mb-2">Your favorite movies</h2>
-        <MoviesRenderer movies={localFavoriteMovies} />
+        {favoriteMovies.length 
+          ? <MoviesRenderer movies={localFavoriteMovies} />
+          : <Empty text="Here you will see your favorite movies!" />
+        }
       </Layout>
     </div>
   );

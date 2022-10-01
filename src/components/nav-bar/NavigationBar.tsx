@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { NavBarOption } from '../../interfaces/NavBarOption';
+import IconSignOut from '@iconscout/react-unicons/icons/uil-sign-out-alt'
+
 import Logo from '../logo/Logo';
 import './NavigationBar.css'
+import stylesVariables from '../../constants/stylesVariables';
 
 const navOptions: NavBarOption[] = [
   { title: "Home", route: "/movies" },
@@ -13,8 +16,9 @@ const navOptions: NavBarOption[] = [
 const NavigationBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [selected, setSelected] = useState<string>("");
+  const [openProfile, setOpenProfile] = useState<boolean>(false)
 
   useEffect(() => {
     const selectedOption = navOptions.find(({ route }: NavBarOption) => route === location.pathname);
@@ -35,32 +39,39 @@ const NavigationBar = () => {
 
   const renderProfile = () => {
     return (
-      <div className="nav-bar__profile">
+      <div className="nav-bar__profile" onClick={() => setOpenProfile(!openProfile)}>
         <div className="nav-bar__profile-info">
           <p className="margin-0" >{user.username}</p>
           <small className="margin-0 small-text">{user.email}</small>
         </div>
         <img src={user.image} className="nav-bar__profile-image" alt="profile"/>
+        {openProfile 
+          ? <div className="nav-bar__profile__popover">
+              <button className="button button--primary" onClick={logout}>
+                <span style={{ marginRight: "5px" }}>Logout</span>
+                <IconSignOut size="20" color={stylesVariables.background}/>
+              </button>
+            </div>
+          : <></>
+        }
       </div>
     )
   }
 
   return (
-    <div>
-      <nav className="nav-bar">
-        <div className="nav-bar__elements">
-          <div className="nav-bar__left-section">
-            <Logo />
-          </div>
-
-          <div className="nav-bar__right-section">
-            {renderOptions()}
-            {renderProfile()}
-          </div>
-
+    <nav className="nav-bar">
+      <div className="nav-bar__elements">
+        <div className="nav-bar__left-section">
+          <Logo />
         </div>
-      </nav>
-    </div>
+
+        <div className="nav-bar__right-section">
+          {renderOptions()}
+          {renderProfile()}
+        </div>
+
+      </div>
+    </nav>
   );
 };
 

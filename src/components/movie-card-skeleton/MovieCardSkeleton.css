@@ -1,0 +1,28 @@
+.movie-card-skeleton {
+  width: 100%;
+  min-width: fit-content;
+  height: fit-content;
+  margin-bottom: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background);
+  border-radius: 10px;
+  border: 0.5px solid var(--disabled);
+}
+.movie-card-skeleton__content {
+  height: fit-content;
+  padding: 15px 20px;
+}
+.movie-card-skeleton__poster {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.movie-card-skeleton__options {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}

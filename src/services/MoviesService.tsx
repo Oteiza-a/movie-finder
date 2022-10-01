@@ -14,6 +14,7 @@ interface SearchRes {
   Response: boolean
   Search: MovieRaw[]
   totalResults: number
+  Error?: string
 }
 
 export const getMovies = async ({ search, page }: MoviesSearch): Promise<SearchRes | null> => {

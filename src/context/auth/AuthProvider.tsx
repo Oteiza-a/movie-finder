@@ -48,10 +48,9 @@ const AuthProvider = ({ children }: Props): JSX.Element => {
   const logout = () => {
     dispatch({
       type: LOGOUT,
-      payload: { 
-        user: null
-      }
+      payload: { user: null }
     })
+    navigate('/');
   }
 
   const setLoading = (loading: boolean) => {

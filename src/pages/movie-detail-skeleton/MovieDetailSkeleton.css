@@ -1,0 +1,22 @@
+.movie-detail-skeleton {
+  display: flex;
+  min-height: 100vh;
+}
+.movie-detail-skeleton__poster-section {
+  box-shadow: var(--accent-shadow);
+  max-width: 380px;
+  width: 40%;
+  min-height: 100vh;
+}
+.movie-detail-skeleton__poster-section-content {
+  padding: 30px;
+}
+.movie-detail-skeleton__poster {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 10px;
+}
+.movie-detail-skeleton__info-section {
+  padding: 30px;
+  flex-grow: 1;
+}

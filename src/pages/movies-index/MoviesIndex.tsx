@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Layout from "../../components/layout/Layout";
 import MoviesRenderer from "../../components/movies-renderer/MoviesRenderer";
 import NavigationBar from "../../components/nav-bar/NavigationBar";
@@ -10,23 +10,28 @@ import IconSearch from '@iconscout/react-unicons/icons/uil-search-alt'
 import stylesVariables from "../../constants/stylesVariables";
 import TextInput from "../../components/text-input/TextInput";
 import './MoviesIndex.css'
+import Empty from "../../components/empty/Empty";
 
 const MoviesIndex = (): JSX.Element => {
   const [search, setSearch] = useState("Batman");
   const [page, setPage] = useState<number>(1);
   const [searchInput, setSearchInput] = useState<string>("");
-
-  const { movies, searchMovies, totalResults } = useMovies();
+  const isMounted = useRef(false);
+  
+  const { movies, searchMovies, loading, totalResults } = useMovies();
   const maxPages = Math.ceil(totalResults / 10)
   
   useEffect(() => {
-    const initialSearch: MoviesSearch = { page, search }
-    searchMovies(initialSearch)
-  }, []) // eslint-disable-line
+    if (isMounted.current) searchMovies({ page, search })
+  }, [search, page]) // eslint-disable-line
 
   useEffect(() => {
-    searchMovies({ page, search })
-  }, [search, page]) // eslint-disable-line
+    if (!movies.length) {
+      const initialSearch: MoviesSearch = { page, search }
+      searchMovies(initialSearch)
+    }
+    isMounted.current = true;
+  }, []) // eslint-disable-line
 
   const onSearch = () => {
     setPage(1);
@@ -65,7 +70,14 @@ const MoviesIndex = (): JSX.Element => {
     )
   }
 
+  const renderMovies = () => {
+    if (!movies?.length && !loading) return <Empty text="No results found!" />
+    return <MoviesRenderer movies={movies} loading={loading} />
+  }
+
   const renderPaginator = () => {
+    if (loading || totalResults === 0) return <></>
+
     const renderPrevBtn = page !== 1;
     const renderNextBtn = page !== maxPages;
 
@@ -101,7 +113,7 @@ const MoviesIndex = (): JSX.Element => {
       <NavigationBar />
       <Layout>
         {renderSearchBar()}
-        <MoviesRenderer movies={movies} />
+        {renderMovies()}
         {renderPaginator()}
       </Layout>
 

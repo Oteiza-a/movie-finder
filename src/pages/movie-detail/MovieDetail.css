@@ -50,8 +50,13 @@
   font-size: 28px;
 }
 @media screen and (max-width: 576px) {
+  .movie-detail {
+    display: block;
+  }
   .movie-detail__poster-section {
     max-width: 100%;
     width: 100%;
   }
+}
+@media screen and (max-width: 450px) {
 }
