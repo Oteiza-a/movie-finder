@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from 'framer-motion';
 import Layout from "../../components/layout/Layout";
 import MoviesRenderer from "../../components/movies-renderer/MoviesRenderer";
-import NavigationBar from "../../components/nav-bar/NavigationBar";
 import { useMovies } from "../../hooks/useMovies";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
 import IconArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-circle-left'
@@ -9,8 +9,9 @@ import IconArrowRight from '@iconscout/react-unicons/icons/uil-arrow-circle-righ
 import IconSearch from '@iconscout/react-unicons/icons/uil-search-alt'
 import stylesVariables from "../../constants/stylesVariables";
 import TextInput from "../../components/text-input/TextInput";
-import './MoviesIndex.css'
 import Empty from "../../components/empty/Empty";
+import './MoviesIndex.css'
+import { transition } from "../../constants/transition";
 
 const MoviesIndex = (): JSX.Element => {
   const [search, setSearch] = useState("Batman");
@@ -109,15 +110,13 @@ const MoviesIndex = (): JSX.Element => {
   }
 
   return (
-    <div>
-      <NavigationBar />
+    <motion.div {...transition}>
       <Layout>
         {renderSearchBar()}
         {renderMovies()}
         {renderPaginator()}
       </Layout>
-
-    </div>
+    </motion.div>
   );
 };
 

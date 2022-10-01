@@ -22,13 +22,18 @@ const NavigationBar = () => {
 
   useEffect(() => {
     const selectedOption = navOptions.find(({ route }: NavBarOption) => route === location.pathname);
-    if (selectedOption) setSelected(selectedOption.route);
+    if (selectedOption) setSelected(selectedOption.route)
   }, []) // eslint-disable-line
   
+  const onSelect = (route: string) => {
+    navigate(route)
+    setSelected(route)
+  }
+
   const renderOptions = () => {
     return navOptions.map(({ title, route }: NavBarOption) => (
       <div 
-        onClick={() => navigate(route)}
+        onClick={() => onSelect(route)}
         className={`nav-bar__option ${route === selected ? "nav-bar__option--selected" : ""}`} 
         key={title}
       >
@@ -57,22 +62,22 @@ const NavigationBar = () => {
       </div>
     )
   }
+  
+  return user.id
+    ? <nav className="nav-bar">
+        <div className="nav-bar__elements">
+          <div className="nav-bar__left-section">
+            <Logo />
+          </div>
 
-  return (
-    <nav className="nav-bar">
-      <div className="nav-bar__elements">
-        <div className="nav-bar__left-section">
-          <Logo />
+          <div className="nav-bar__right-section">
+            {renderOptions()}
+            {renderProfile()}
+          </div>
+
         </div>
-
-        <div className="nav-bar__right-section">
-          {renderOptions()}
-          {renderProfile()}
-        </div>
-
-      </div>
-    </nav>
-  );
+      </nav>
+    : <></>;
 };
 
 export default NavigationBar;
