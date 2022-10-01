@@ -1,4 +1,5 @@
-import IconFilm from '@iconscout/react-unicons/icons/uil-film'
+import { FiFilm } from 'react-icons/fi';
+
 import stylesVariables from '../../constants/stylesVariables';
 import './Empty.css';
 
@@ -10,7 +11,7 @@ const Empty = ({ text }: EmptyProps) => {
   return (
     <div className="empty">
       <div>
-        <IconFilm size="50" color={stylesVariables.accent}/>
+        <FiFilm size="50" color={stylesVariables.accent}/>
       </div>
       <h3 className="empty__text mt-2">{ text }</h3>
     </div>

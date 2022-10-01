@@ -8,7 +8,9 @@ const mockOnSeeMore = jest.fn();
 describe("MovieCard", () => {
   test("should render movie card with title and see more button", () => {
     render(
-      <MovieCard movie={movie} onSeeMore={mockOnSeeMore}/>
+      <MoviesProvider>
+        <MovieCard movie={movie} onSeeMore={mockOnSeeMore}/>
+      </MoviesProvider>
     )
     const movieTitleElement = screen.getByRole("heading", { name: movie.title })
     expect(movieTitleElement).toBeInTheDocument();

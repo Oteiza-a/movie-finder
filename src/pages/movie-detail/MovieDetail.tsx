@@ -3,8 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { stringWithCommasToArray } from "../../helpers/strings";
 import { useMovies } from "../../hooks/useMovies";
 import { Rating } from "../../interfaces/Rating";
-import IconStarRating from '@iconscout/react-unicons/icons/uil-envelope-star'
-import IconArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-circle-left'
+import { FiArrowLeftCircle, FiStar } from 'react-icons/fi';
 import stylesVariables from "../../constants/stylesVariables";
 import MovieDetailSkeleton from "../movie-detail-skeleton/MovieDetailSkeleton";
 import { motion } from 'framer-motion';
@@ -68,7 +67,7 @@ const MovieDetail = (): JSX.Element => {
           </div>
           <div className="mt-3">
             <button className="button button--secondary" onClick={onGoBack}>
-              <IconArrowLeft size="20" color={stylesVariables.accent}/>
+              <FiArrowLeftCircle size="20" color={stylesVariables.accent}/>
               <span style={{ marginLeft: "5px" }}>Go back</span>
             </button>
           </div>
@@ -90,7 +89,7 @@ const MovieDetail = (): JSX.Element => {
       <div className="ratings">
         {ratings.map(({ source, value }: Rating) => (
           <div className="ratings__item" key={source}>
-            <IconStarRating size="20" color={stylesVariables.accent}/>
+            <FiStar size="20" color={stylesVariables.accent}/>
             <p className="ratings__name">{source}</p>
             <h4 className="ratings__points">{value}</h4>
           </div>

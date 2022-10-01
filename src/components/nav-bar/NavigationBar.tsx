@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { NavBarOption } from '../../interfaces/NavBarOption';
-import IconSignOut from '@iconscout/react-unicons/icons/uil-sign-out-alt'
+import { FiLogOut } from 'react-icons/fi'
 
 import Logo from '../logo/Logo';
 import './NavigationBar.css'
@@ -54,7 +54,7 @@ const NavigationBar = () => {
           ? <div className="nav-bar__profile__popover">
               <button className="button button--primary" onClick={logout}>
                 <span style={{ marginRight: "5px" }}>Logout</span>
-                <IconSignOut size="20" color={stylesVariables.background}/>
+                <FiLogOut size="20" color={stylesVariables.background}/>
               </button>
             </div>
           : <></>

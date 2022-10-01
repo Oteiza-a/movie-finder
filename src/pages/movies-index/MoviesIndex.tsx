@@ -4,9 +4,7 @@ import Layout from "../../components/layout/Layout";
 import MoviesRenderer from "../../components/movies-renderer/MoviesRenderer";
 import { useMovies } from "../../hooks/useMovies";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
-import IconArrowLeft from '@iconscout/react-unicons/icons/uil-arrow-circle-left'
-import IconArrowRight from '@iconscout/react-unicons/icons/uil-arrow-circle-right'
-import IconSearch from '@iconscout/react-unicons/icons/uil-search-alt'
+import { FiArrowLeftCircle, FiArrowRightCircle, FiSearch } from 'react-icons/fi';
 import stylesVariables from "../../constants/stylesVariables";
 import TextInput from "../../components/text-input/TextInput";
 import Empty from "../../components/empty/Empty";
@@ -64,7 +62,7 @@ const MoviesIndex = (): JSX.Element => {
             className="button button--primary button--fit"
             onClick={() => onSearch() }
           >
-            <IconSearch size="20" color={stylesVariables.background}/>
+            <FiSearch size="20" color={stylesVariables.background}/>
           </button>
         </div>
       </div>
@@ -89,7 +87,7 @@ const MoviesIndex = (): JSX.Element => {
               className="button button--primary" 
               onClick={() => onPageChange(page - 1)}
             >
-              <IconArrowLeft size="20" color={stylesVariables.background}/>
+              <FiArrowLeftCircle size="20" color={stylesVariables.background}/>
               <span style={{ marginLeft: "5px" }}>Previous Page</span>
             </button>
           : <div></div>
@@ -101,7 +99,7 @@ const MoviesIndex = (): JSX.Element => {
               disabled={page === maxPages}
             >
               <span style={{ marginRight: "5px" }}>Next Page</span>
-              <IconArrowRight size="20" color={stylesVariables.background}/>
+              <FiArrowRightCircle size="20" color={stylesVariables.background}/>
             </button>
           : <div></div>
         }

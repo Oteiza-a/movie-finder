@@ -1,6 +1,6 @@
 import { capitalize } from "../../helpers/strings";
 import { Movie } from "../../interfaces/Movie";
-import IconArrowRight from '@iconscout/react-unicons/icons/uil-arrow-circle-right'
+import { FiArrowRightCircle } from 'react-icons/fi';
 import MarkFavorite from "../mark-favorite/MarkFavorite";
 import { useMovies } from "../../hooks/useMovies";
 import stylesVariables from "../../constants/stylesVariables";
@@ -48,7 +48,7 @@ const MovieCard = ({ movie, onSeeMore }: MovieCardProps) => {
         <div className="movie-card__options">
           <button className="button button--secondary" onClick={() => onSeeMore(id)}>
             <span style={{ marginRight: "10px" }}>See more</span>
-            <IconArrowRight size="20" color={accentColor}/>
+            <FiArrowRightCircle size="20" color={accentColor}/>
           </button>
         </div>
       </div>
