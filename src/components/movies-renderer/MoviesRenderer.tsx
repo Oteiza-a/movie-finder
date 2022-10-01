@@ -11,6 +11,7 @@ interface MoviesRendererProps {
 
 const MoviesRenderer = ({ movies, loading }: MoviesRendererProps) => {
   const navigate = useNavigate();
+  
   const onSeeMore = (movieId: string) => {
     navigate(`/movie/${movieId}`);
   }

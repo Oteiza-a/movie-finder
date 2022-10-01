@@ -29,7 +29,6 @@ export const getMovies = async ({ search, page }: MoviesSearch): Promise<SearchR
 
 export const getMovie = async (id: string): Promise<MovieDetailRaw | null> => {
   try {
-    // return rawMovieDetailMock;
     const res = await axiosInstance.get('/', { params: { i: id, plot: "full"}});
     return res.data;
   } catch (error) {

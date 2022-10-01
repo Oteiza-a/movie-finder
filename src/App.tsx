@@ -7,8 +7,8 @@ import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import AuthProvider from './context/auth/AuthProvider';
 import MoviesProvider from './context/movies/MoviesProvider';
 import Favorites from './pages/favorites/Favorites';
-import './App.css';
 import NavigationBar from './components/nav-bar/NavigationBar';
+import './App.css';
 
 function App() {
   const location = useLocation();
