@@ -75,7 +75,6 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
 
   const removeFavoriteMovie = (movieId: string) => {
     const filteredMovies = favoriteMovies.filter((favMovie: Movie) => favMovie.id !== movieId);
-
     dispatch({ 
       type: SET_FAVORITE_MOVIES, 
       payload: { favoriteMovies: filteredMovies } as MoviesState 

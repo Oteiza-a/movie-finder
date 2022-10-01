@@ -6,6 +6,7 @@ import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import './App.css';
 import AuthProvider from './context/auth/AuthProvider';
 import MoviesProvider from './context/movies/MoviesProvider';
+import Favorites from './pages/favorites/Favorites';
 
 function App() {
   const routes = useRoutes([
@@ -20,6 +21,10 @@ function App() {
     { 
       path: "/movie/:id", 
       element: <ProtectedRoute routeType="protected"><MovieDetail /></ProtectedRoute>,
+    },
+    { 
+      path: "/favorites", 
+      element: <ProtectedRoute routeType="protected"><Favorites /></ProtectedRoute>,
     },
     { 
       path: "*", 

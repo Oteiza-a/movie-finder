@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { NavBarOption } from '../../interfaces/NavBarOption';
 import Logo from '../logo/Logo';
@@ -12,6 +12,7 @@ const navOptions: NavBarOption[] = [
 
 const NavigationBar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [selected, setSelected] = useState<string>("");
 
@@ -22,8 +23,12 @@ const NavigationBar = () => {
   
   const renderOptions = () => {
     return navOptions.map(({ title, route }: NavBarOption) => (
-      <div className={`nav-bar__option ${route === selected ? "nav-bar__option--selected" : ""}`} key={title}>
-        <Link className="nav-bar__option-link" to={route}>{title}</Link>
+      <div 
+        onClick={() => navigate(route)}
+        className={`nav-bar__option ${route === selected ? "nav-bar__option--selected" : ""}`} 
+        key={title}
+      >
+        <p className="nav-bar__option-link margin-0">{title}</p>
       </div>
     ))
   }
