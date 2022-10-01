@@ -1,6 +1,6 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 
-import { Login, MoviesIndex } from './pages/index';
+import { Login, MoviesIndex, MovieDetail } from './pages/index';
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 
 import './App.css';
@@ -16,6 +16,10 @@ function App() {
     { 
       path: "/movies", 
       element: <ProtectedRoute routeType="protected"><MoviesIndex /></ProtectedRoute>,
+    },
+    { 
+      path: "/movie/:id", 
+      element: <ProtectedRoute routeType="protected"><MovieDetail /></ProtectedRoute>,
     },
     { 
       path: "*", 

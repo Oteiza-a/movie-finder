@@ -2,6 +2,7 @@
   width: 100vw;
   background-color: var(--background);
   box-shadow: var(--accent-shadow);
+  z-index: 3;
 }
 .nav-bar__left-section {
   padding: 20px;

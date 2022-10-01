@@ -1,5 +1,5 @@
 import { MoviesState } from "../../interfaces/MoviesState";
-import { SET_MOVIES, SET_MOVIES_LOADING, SET_FAVORITE_MOVIES } from "../types";
+import { SET_MOVIES, SET_MOVIES_LOADING, SET_FAVORITE_MOVIES, SET_MOVIE_DETAIL } from "../types";
 
 interface Action {
   type: string,
@@ -14,6 +14,11 @@ const MoviesReducer = (state: MoviesState, action: Action): MoviesState => {
       return {
         ...state,
         movies: payload.movies,
+      }
+    case SET_MOVIE_DETAIL:
+      return {
+        ...state,
+        movieDetail: payload.movieDetail,
       }
     case SET_FAVORITE_MOVIES:
       return {

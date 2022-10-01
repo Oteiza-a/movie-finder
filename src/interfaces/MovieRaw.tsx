@@ -1,4 +1,4 @@
-export interface RawMovie {
+export interface MovieRaw {
   Title: string
   Year: string
   imdbID: string

@@ -1,7 +1,7 @@
 import { Movie } from "../interfaces/Movie"
-import { RawMovie } from "../interfaces/RawMovie";
+import { MovieRaw } from "../interfaces/MovieRaw";
 
-export const movieAdapter = (rawMovie: RawMovie) => {
+export const movieAdapter = (rawMovie: MovieRaw) => {
   const { Title, Year, imdbID, Type, Poster } = rawMovie
 
   const movie: Movie = {

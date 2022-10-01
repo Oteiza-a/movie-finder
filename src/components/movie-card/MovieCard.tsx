@@ -5,15 +5,17 @@ import MarkFavorite from "../mark-favorite/MarkFavorite";
 import { useMovies } from "../../hooks/useMovies";
 import stylesVariables from "../../constants/stylesVariables";
 import "./MovieCard.css"
+import { useNavigate } from "react-router-dom";
 
 interface MovieCardProps {
   movie: Movie
+  onSeeMore: (movieId: string) => void
 }
 
-const MovieCard = ({ movie }: MovieCardProps) => {
+const MovieCard = ({ movie, onSeeMore }: MovieCardProps) => {
   const { id, title, year, type, poster } = movie;
   const { favoriteMovies, addFavoriteMovie, removeFavoriteMovie } = useMovies();
-  const accentColor: string = stylesVariables.accent
+  const accentColor: string = stylesVariables.accent;
   const isFavorite: boolean = favoriteMovies.some((favMovie: Movie) => favMovie.id === id);
 
   const onMarkAsFavorite = () => {
@@ -23,7 +25,6 @@ const MovieCard = ({ movie }: MovieCardProps) => {
       addFavoriteMovie(movie);
     }
   }
-
   
   return (
     <div className="movie-card" key={id}>
@@ -35,7 +36,7 @@ const MovieCard = ({ movie }: MovieCardProps) => {
         <h4 className="movie-card__title">{title}</h4>
         <small className="small-text">{capitalize(type)}, {year}</small>
         <div className="movie-card__options">
-          <button className="button button--secondary">
+          <button className="button button--secondary" onClick={() => onSeeMore(id)}>
             <span style={{ marginRight: "10px" }}>See more</span>
             <IconArrowRight size="20" color={accentColor}/>
           </button>

@@ -5,3 +5,4 @@ export const SET_AUTH_LOADING: string = 'SET_AUTH_LOADING';
 export const SET_MOVIES: string = 'SET_MOVIES';
 export const SET_MOVIES_LOADING: string = 'SET_MOVIES_LOADING';
 export const SET_FAVORITE_MOVIES: string = 'SET_FAVORITE_MOVIES';
+export const SET_MOVIE_DETAIL: string = 'SET_FAVORITE_MOVIES';

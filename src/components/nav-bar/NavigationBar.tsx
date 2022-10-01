@@ -5,11 +5,12 @@ import { NavBarOption } from '../../interfaces/NavBarOption';
 import Logo from '../logo/Logo';
 import './NavigationBar.css'
 
-interface NavigationBarProps {
-  navOptions: NavBarOption[]
-}
+const navOptions: NavBarOption[] = [
+  { title: "Home", route: "/movies" },
+  { title: "Favorites", route: "/favorites" },
+]
 
-const NavigationBar = ({ navOptions }: NavigationBarProps) => {
+const NavigationBar = () => {
   const location = useLocation();
   const { user } = useAuth();
   const [selected, setSelected] = useState<string>("");

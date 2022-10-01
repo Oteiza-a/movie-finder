@@ -1,18 +1,21 @@
 import { ReactNode, useEffect, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { openDialog } from "../../services/DialogService";
-import { SET_FAVORITE_MOVIES, SET_MOVIES } from "../types";
+import { SET_FAVORITE_MOVIES, SET_MOVIES, SET_MOVIE_DETAIL } from "../types";
 import MoviesReducer from "./MoviesReducer";
 import { MoviesState } from "../../interfaces/MoviesState";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
-import { getMovies } from "../../services/MoviesService";
+import { getMovie, getMovies } from "../../services/MoviesService";
 import { MoviesProviderValue } from "../../interfaces/MoviesProviderValue";
 import MoviesContext from "./MoviesContext";
-import { RawMovie } from "../../interfaces/RawMovie";
+import { MovieRaw } from "../../interfaces/MovieRaw";
 import { movieAdapter } from "../../adapters/movieAdapter";
 import { moviesMocks } from "../../constants/moviesMocks";
 import { Movie } from "../../interfaces/Movie";
 import { getLocalStorageObject } from "../../helpers/localStorage";
+import { MovieDetailRaw } from "../../interfaces/MovieDetailRaw";
+import { movieDetailAdapter } from "../../adapters/movieDetailAdapter";
+import { MovieDetail } from "../../interfaces/MovieDetail";
 
 interface Props {
   children?: ReactNode
@@ -29,6 +32,7 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
     movies: [],
     favoriteMovies: [],
     loading: false,
+    movieDetail: null,
   });
   
   const navigate = useNavigate();
@@ -42,15 +46,24 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
 
     dispatch({ type: SET_MOVIES, payload: { movies: moviesMocks } as MoviesState })
     return
-    const moviesRes: RawMovie[] = await getMovies(search);
+    const moviesRes: MovieRaw[] = await getMovies(search);
 
     if (!moviesRes?.length) {
       openDialog("movies-get-error");
     } else {
-      const adaptedMovies = moviesRes.map((rawMovie: RawMovie) => movieAdapter(rawMovie));
+      const adaptedMovies = moviesRes.map((rawMovie: MovieRaw) => movieAdapter(rawMovie));
       dispatch({ type: SET_MOVIES, payload: { movies: adaptedMovies } as MoviesState })
     }
+  }
 
+  const getMovieDetail = async (movieId: string) => {
+    const movieRes: MovieDetailRaw | null = await getMovie(movieId);
+    if (!movieRes) {
+      openDialog("movies-get-error");
+    } else {
+      const adaptedMovieDetail: MovieDetail = movieDetailAdapter(movieRes)
+      dispatch({ type: SET_MOVIE_DETAIL, payload: { movieDetail: adaptedMovieDetail } as MoviesState })
+    }
   }
 
   const addFavoriteMovie = (movie: Movie) => {
@@ -69,12 +82,14 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
     })
   }
 
-  const { movies, favoriteMovies, loading } = state;
+  const { movies, favoriteMovies, movieDetail, loading } = state;
   const providerValue: MoviesProviderValue = {
     movies,
     favoriteMovies,
     loading,
+    movieDetail: movieDetail || null,
     searchMovies,
+    getMovieDetail,
     addFavoriteMovie,
     removeFavoriteMovie,
   }
