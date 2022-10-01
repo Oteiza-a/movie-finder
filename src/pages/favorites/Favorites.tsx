@@ -17,6 +17,7 @@ const Favorites = (): JSX.Element => {
     <div>
       <NavigationBar />
       <Layout>
+        <h2 className="mt-5 mb-2">Your favorite movies</h2>
         <MoviesRenderer movies={localFavoriteMovies} />
       </Layout>
     </div>

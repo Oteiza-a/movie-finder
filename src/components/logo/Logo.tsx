@@ -14,7 +14,7 @@ const Logo = ({ primaryColor, secondaryColor, fontSize }: LogoProps): JSX.Elemen
   return (
     <div className="logo">
       <h3 className="logo__text" style={{ color: color1, fontSize }}>Movie</h3>
-      <h3 className="logo__text" style={{ color: color2 }}>Finder</h3>
+      <h3 className="logo__text" style={{ color: color2, fontSize}}>Finder</h3>
     </div>
   );
 };

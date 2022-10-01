@@ -3,7 +3,7 @@ import { MoviesSearch } from "../interfaces/MoviesSearch";
 import { MovieRaw } from "../interfaces/MovieRaw";
 import { MovieDetailRaw } from "../interfaces/MovieDetailRaw";
 
-const apiKey = "7582316f" 
+const apiKey = "7582316f" // TODO: set in .env file in production
 const url = "https://omdbapi.com/";
 const axiosInstance = axios.create({
   baseURL: url,
