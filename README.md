@@ -8,6 +8,7 @@ Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
 
 ## Demo
 
+![MovieFinderGif1](https://user-images.githubusercontent.com/49501058/193469201-55033e76-3c35-4b96-b9bd-32410abef631.gif)
 
 ## Main Features
 
