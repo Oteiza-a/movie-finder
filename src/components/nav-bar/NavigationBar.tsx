@@ -30,6 +30,11 @@ const NavigationBar = () => {
     setSelected(route)
   }
 
+  const onLogout = () => {
+    setSelected("")
+    logout()
+  }
+
   const renderOptions = () => {
     return navOptions.map(({ title, route }: NavBarOption) => (
       <div 
@@ -52,7 +57,7 @@ const NavigationBar = () => {
         <img src={user.image} className="nav-bar__profile-image" alt="profile"/>
         {openProfile 
           ? <div className="nav-bar__profile__popover">
-              <button className="button button--primary" onClick={logout}>
+              <button className="button button--primary" onClick={onLogout}>
                 <span style={{ marginRight: "5px" }}>Logout</span>
                 <FiLogOut size="20" color={stylesVariables.background}/>
               </button>
