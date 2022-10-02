@@ -25,6 +25,7 @@ Deployed in Vercel: https://movie-finder-orcin.vercel.app/
 
 - Auth page (with dummy credentials for now), login and logout.
 - List searched movies fetched from the OMDb API (https://www.omdbapi.com/), with server-side pagination.
+- Typeahead search bar with suggestions by the input.
 - View movies information in detail, like the plot, director, main actors and ratings.
 - Mark movies as favorite.
 - View your favorite movies list.
