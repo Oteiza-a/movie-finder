@@ -1,46 +1,48 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# MovieFinder
 
-## Available Scripts
+MovieFinder is a React Typescript app built with the OMDb REST API to find any movie, and it's detailed information. 
 
-In the project directory, you can run:
+Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Main Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Auth page (with dummy credentials for now), login and logout.
+- List searched movies fetched from the OMDb API (https://www.omdbapi.com/), with server-side pagination.
+- View movies information in detail, like the plot, director, main actors and ratings.
+- Mark movies as favorite.
+- View your favorite movies list.
+- Unit testing with jest and react-testing-library of the main components: login form, search bar, movie cards and navigation bar.
+## Running Locally
 
-### `npm run build`
+Install MovieFinder and run with npm
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  npm install
+  npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running Tests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Test MovieFinder with npm, jest and react-testing-library
 
-### `npm run eject`
+```bash
+  npm test
+```
+## Tech
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**App:** React Typescript
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**State Management:** React Context, React useReducer.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**Testing:** Jest, React testing library
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- [@oteiza-a](https://www.github.com/Oteiza-a)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
