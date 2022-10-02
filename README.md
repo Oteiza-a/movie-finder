@@ -3,12 +3,21 @@
 
 MovieFinder is a React Typescript app built with the OMDb REST API to find any movie, and it's detailed information. 
 
+Dummy auth credentials used for now, login with:
+- email: test@gmail.com | password: 12345678
+- email: dummy@gmail.com | password: 12345678
+
+
 Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
 
 
 ## Demo
 
 ![MovieFinderGif1](https://user-images.githubusercontent.com/49501058/193469201-55033e76-3c35-4b96-b9bd-32410abef631.gif)
+
+![MovieFinderGif2](https://user-images.githubusercontent.com/49501058/193469528-a305a7d3-6e06-48a0-933e-e23497cbfd31.gif)
+
+![MovieFinderGif3](https://user-images.githubusercontent.com/49501058/193469718-39715886-8a8c-4fdb-a1ab-8c4c935a7d5a.gif)
 
 ## Main Features
 
@@ -18,6 +27,8 @@ Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
 - Mark movies as favorite.
 - View your favorite movies list.
 - Unit testing with jest and react-testing-library of the main components: login form, search bar, movie cards and navigation bar.
+- Responsive design.
+
 ## Running Locally
 
 Install MovieFinder and run with npm
