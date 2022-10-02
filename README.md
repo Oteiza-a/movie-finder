@@ -19,6 +19,8 @@ Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
 
 ![MovieFinderGif3](https://user-images.githubusercontent.com/49501058/193469718-39715886-8a8c-4fdb-a1ab-8c4c935a7d5a.gif)
 
+![MovieFinderGif6](https://user-images.githubusercontent.com/49501058/193473821-3eedf3c5-bcdb-420e-af65-1db2639f57e4.gif)
+
 ## Main Features
 
 - Auth page (with dummy credentials for now), login and logout.
