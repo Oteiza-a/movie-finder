@@ -58,8 +58,9 @@
 .nav-bar__profile__popover {
   position: absolute;
   top: 50px;
+  right: 0px;
   background-color: var(--background);
-  width: 100%;
+  width: fit-content;
   padding: 20px;
   box-shadow: var(--default-shadow);
   border-radius: 8px;
@@ -68,5 +69,5 @@
 @media screen and (max-width: 576px){
   .nav-bar__profile-info {
     display: none;
-  }
+  }  
 }

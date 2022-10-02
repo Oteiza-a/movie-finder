@@ -4,6 +4,7 @@
 .movie-detail__poster-section {
   box-shadow: var(--accent-shadow);
   max-width: 380px;
+  min-height: 100vh;
   width: 40%;
 }
 .movie-detail__poster-section-content {

@@ -35,7 +35,7 @@ const SearchBar = ({ onSearch }: CardProps) => {
 
     return (
       <div className="typeahead">
-        {typeaheadSuggestions.map((suggestion: string) => (
+        {typeaheadSuggestions?.map((suggestion: string) => (
           <div 
             className="typeahead__suggestion" 
             onClick={() => onEnter(suggestion) }
