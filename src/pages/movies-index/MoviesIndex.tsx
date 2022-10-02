@@ -4,17 +4,16 @@ import Layout from "../../components/layout/Layout";
 import MoviesRenderer from "../../components/movies-renderer/MoviesRenderer";
 import { useMovies } from "../../hooks/useMovies";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
-import { FiArrowLeftCircle, FiArrowRightCircle, FiSearch } from 'react-icons/fi';
+import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi';
 import stylesVariables from "../../constants/stylesVariables";
-import TextInput from "../../components/text-input/TextInput";
 import Empty from "../../components/empty/Empty";
-import './MoviesIndex.css'
 import { transition } from "../../constants/transition";
+import SearchBar from "../../components/search-bar/SearchBar";
+import './MoviesIndex.css'
 
 const MoviesIndex = (): JSX.Element => {
   const [search, setSearch] = useState("Batman");
   const [page, setPage] = useState<number>(1);
-  const [searchInput, setSearchInput] = useState<string>("");
   const isMounted = useRef(false);
   
   const { movies, searchMovies, loading, totalResults } = useMovies();
@@ -32,10 +31,9 @@ const MoviesIndex = (): JSX.Element => {
     isMounted.current = true;
   }, []) // eslint-disable-line
 
-  const onSearch = () => {
+  const onSearch = (searchValue: string) => {
     setPage(1);
-    setSearch(searchInput);
-    setSearchInput("");
+    setSearch(searchValue);
   }
 
   const onPageChange = (newPage: number) => {
@@ -47,24 +45,7 @@ const MoviesIndex = (): JSX.Element => {
     return (
       <div className="search">
         <h3 className="mt-4 mb-3">Search movies and series!</h3>
-        <div className="d-flex">
-          <TextInput
-            type="text"
-            name="searchBar"
-            placeholder="e.g. The Goodfellas"
-            maxLength={100}
-            className="input"
-            onChange={(e) => setSearchInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && onSearch() }
-            value={searchInput}
-          />
-          <button 
-            className="button button--primary button--fit"
-            onClick={() => onSearch() }
-          >
-            <FiSearch size="20" color={stylesVariables.background}/>
-          </button>
-        </div>
+        <SearchBar onSearch={onSearch}/>
       </div>
     )
   }

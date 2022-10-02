@@ -44,9 +44,6 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
   }, [state])
 
   const searchMovies = async (search: MoviesSearch) => {
-
-    // dispatch({ type: SET_MOVIES, payload: { movies: moviesMocks } as MoviesState })
-    // return
     dispatch({ type: SET_MOVIES_LOADING, payload: { loading: true } as MoviesState })
     const moviesRes = await getMovies(search);
     

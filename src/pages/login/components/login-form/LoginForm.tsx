@@ -44,25 +44,27 @@ const LoginForm = ({ onSubmit }: LoginProps) => {
     <form className="form">
 
       <div className="form__input-wrapper form__input-wrapper--spaced">
-        <label htmlFor="email" className="form__input-label">Email</label>
+        <label id="email-label" htmlFor="email" className="form__input-label">Email</label>
         <TextInput 
           value={form?.email}
           type="email"
           name="email"
           placeholder="user@email.com"
           validation={isEmailValid}
+          aria-labelledby="email-label"
           {...commonInputAttributes}
         />
       </div>
 
       <div className="form__input-wrapper form__input-wrapper--spaced">
-        <label htmlFor="password" className="form__input-label">Password</label>
+        <label id="password-label" htmlFor="password" className="form__input-label">Password</label>
         <TextInput 
           value={form?.password}
           type="password"
           name="password"
           placeholder="*****************"
           validation={isPasswordValid}
+          aria-labelledby="password-label"
           {...commonInputAttributes}
         />
       </div>

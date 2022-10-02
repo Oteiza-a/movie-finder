@@ -64,7 +64,7 @@ const NavigationBar = () => {
   }
   
   return user.id
-    ? <nav className="nav-bar">
+    ? <nav className="nav-bar" data-testid="nav-bar">
         <div className="nav-bar__elements">
           <div className="nav-bar__left-section">
             <Logo />
