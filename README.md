@@ -8,7 +8,7 @@ Dummy auth credentials used for now, login with:
 - email: dummy@gmail.com | password: 12345678
 
 
-Deployed in Vercel: https://movie-finder-hj3c7fw02-oteiza-a.vercel.app
+Deployed in Vercel: https://movie-finder-orcin.vercel.app/
 
 
 ## Demo
