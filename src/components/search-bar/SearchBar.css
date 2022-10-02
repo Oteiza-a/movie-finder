@@ -1,8 +1,25 @@
-.card {
-  width: fit-content;
-  height: fit-content;
-  padding: 20px 15px;
+.search-bar {
+  position: relative;
+  display: flex;
+}
+.typeahead {
+  z-index: 2;
+  position: absolute;
+  width: 100%;
+
   background-color: var(--background);
-  border-radius: 10px;
-  box-shadow: var(--default-shadow);
+  border-radius: 5px;
+  top: 40px;
+  overflow: hidden;
+}
+.typeahead__suggestion {
+  padding: 5px;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+}
+.typeahead__suggestion:hover {
+  background-color: var(--soft-accent);
+}
+.typeahead .typeahead__suggestion:not(:first-child) {
+  border-top: none;
 }

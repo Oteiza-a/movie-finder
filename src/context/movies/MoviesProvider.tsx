@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useReducer } from "react";
 import { openDialog } from "../../services/DialogService";
-import { SET_FAVORITE_MOVIES, SET_MOVIES, SET_MOVIES_LOADING, SET_MOVIE_DETAIL } from "../types";
+import { SET_FAVORITE_MOVIES, SET_MOVIES, SET_MOVIES_LOADING, SET_MOVIE_DETAIL, SET_TYPEAHEAD_SUGGESTIONS } from "../types";
 import MoviesReducer from "./MoviesReducer";
 import { MoviesState } from "../../interfaces/MoviesState";
 import { MoviesSearch } from "../../interfaces/MoviesSearch";
@@ -14,6 +14,7 @@ import { movieDetailAdapter } from "../../adapters/movieDetailAdapter";
 import { MovieDetail } from "../../interfaces/MovieDetail";
 import { MovieRaw } from "../../interfaces/MovieRaw";
 import { movieAdapter } from "../../adapters/movieAdapter";
+import { typeaheadSuggestionAdapter } from "../../adapters/typeaheadSuggestion";
 
 interface Props {
   children?: ReactNode
@@ -35,6 +36,7 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
     favoriteMovies: [],
     loading: false,
     movieDetail: null,
+    typeaheadSuggestions: [],
   });
   
   const [state, dispatch] = useReducer(MoviesReducer, initialState);
@@ -87,17 +89,38 @@ const MoviesProvider = ({ children }: Props): JSX.Element => {
     })
   }
 
-  const { movies, totalResults, favoriteMovies, movieDetail, loading } = state;
+  const getSuggestions = async (input :string) => {
+    const moviesRes = await getMovies({ search: input, page: 1 });
+
+    if (!moviesRes || moviesRes.Error) {
+      dispatch({  
+        type: SET_TYPEAHEAD_SUGGESTIONS,
+        payload: { typeaheadSuggestions: [] as string[] } as MoviesState 
+      })
+      return
+    }
+
+    const typeaheadSuggestions = moviesRes.Search.map((movie: MovieRaw) => typeaheadSuggestionAdapter(movie));
+
+    dispatch({ 
+      type: SET_TYPEAHEAD_SUGGESTIONS, 
+      payload: { typeaheadSuggestions } as MoviesState 
+    })
+  }
+
+  const { movies, totalResults, favoriteMovies, movieDetail, loading, typeaheadSuggestions } = state;
   const providerValue: MoviesProviderValue = {
     movies,
     totalResults,
     favoriteMovies,
     loading,
     movieDetail: movieDetail || null,
+    typeaheadSuggestions,
     searchMovies,
     getMovieDetail,
     addFavoriteMovie,
     removeFavoriteMovie,
+    getSuggestions,
   }
 
   return (

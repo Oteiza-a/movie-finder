@@ -6,5 +6,6 @@ export interface MoviesState {
   totalResults: number,
   favoriteMovies: Movie[]
   loading: boolean
-  movieDetail: MovieDetail| null
+  movieDetail: MovieDetail | null
+  typeaheadSuggestions: string[]
 }

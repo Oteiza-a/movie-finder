@@ -18,8 +18,9 @@ interface SearchRes {
 }
 
 export const getMovies = async ({ search, page }: MoviesSearch): Promise<SearchRes | null> => {
+  const s = search.trim();
   try {
-    const res = await axiosInstance.get('/', { params: { s: search, page }});
+    const res = await axiosInstance.get('/', { params: { s, page }});
     return res.data;
   } catch (error) {
     console.error(error);

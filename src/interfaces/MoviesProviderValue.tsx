@@ -8,8 +8,10 @@ export interface MoviesProviderValue {
   movieDetail: MovieDetail | null,
   favoriteMovies: Movie[],
   loading: boolean,
+  typeaheadSuggestions: string[],
   searchMovies: (search: MoviesSearch) => void,
   getMovieDetail: (movieId: string) => void,
   addFavoriteMovie: (movie: Movie) => void,
   removeFavoriteMovie: (movieId: string) => void,
+  getSuggestions: (input: string) => void,
 }

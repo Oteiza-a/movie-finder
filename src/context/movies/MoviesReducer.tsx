@@ -1,5 +1,11 @@
 import { MoviesState } from "../../interfaces/MoviesState";
-import { SET_MOVIES, SET_MOVIES_LOADING, SET_FAVORITE_MOVIES, SET_MOVIE_DETAIL } from "../types";
+import { 
+  SET_MOVIES, 
+  SET_MOVIES_LOADING, 
+  SET_FAVORITE_MOVIES, 
+  SET_MOVIE_DETAIL, 
+  SET_TYPEAHEAD_SUGGESTIONS
+} from "../types";
 
 interface Action {
   type: string,
@@ -30,6 +36,11 @@ const MoviesReducer = (state: MoviesState, action: Action): MoviesState => {
       return {
         ...state,
         loading: payload.loading,
+      }
+    case SET_TYPEAHEAD_SUGGESTIONS:
+      return {
+        ...state,
+        typeaheadSuggestions: payload.typeaheadSuggestions,
       }
   
     default:
